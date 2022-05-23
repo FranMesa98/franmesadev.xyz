@@ -1,0 +1,164 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ejemplo</title>
+    <link rel="stylesheet" href="estilos.css">
+    <script type="text/javascript" src="libreria.js"></script>
+
+    <script>
+
+
+        var arrayLetras = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "ñ", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+        var palabras = ["caballo", "duelo", "pistola", "vaquero", "taberna", "sheriff"]
+        var longitudPalabra;
+        var i;
+        var palabraAleatoria;
+        var intentos = 0;
+        var longitud_palabra;
+        var final_del_juego = false;
+
+        window.onload = function () {
+            sacarPalabraAleatoria();
+            longitud_palabra = palabraAleatoria.length;
+            AnadirGuiones();
+        }
+
+        function sacarPalabraAleatoria() {
+            var numeroAleatorio = Math.floor(Math.random() * palabras.length);
+            palabraAleatoria = palabras[numeroAleatorio];
+            console.log("La palabra aleatoria es " + palabraAleatoria);
+        }
+
+        function AnadirGuiones() {
+            for (var i = 0; i < palabraAleatoria.length; i++) {
+                document.getElementById("PalabraParaAdivinar").innerHTML += '<div id="' + i + '" class="PalabraEscondida" ></div>';
+            }
+        }
+
+        function comprobar(letra) {
+            if (palabraAleatoria.indexOf(letra) == -1) {
+                document.getElementById("Letras_Usadas").innerHTML += letra + "-";
+                intentos++;
+                document.getElementById(letra).style.pointerEvents = "none";
+                document.getElementById(letra).style.backgroundColor = "grey";
+                cambiarFoto();
+            } else {
+                for (var i = 0; i < palabraAleatoria.length; i++) {
+                    if (palabraAleatoria[i] == letra) {
+                        document.getElementById(i).innerHTML = letra;
+                        document.getElementById(i).style.borderBottom = "solid white";
+                        document.getElementById(letra).style.pointerEvents = "none";
+                        document.getElementById(letra).style.backgroundColor = "grey";
+                        longitud_palabra--;
+                    }
+                }
+                document.getElementById("Letras_Usadas").innerHTML += letra + "-";
+                if (longitud_palabra == 0) {
+                    document.getElementById("caja").style.backgroundImage = "url(imagenes/ganaar.png)";
+                    finJuego()
+                }
+            }
+        }
+
+        function cambiarFoto() {
+            switch (intentos) {
+                case 1:
+                    document.getElementById("caja").style.backgroundImage = "url(imagenes/imagen_" + intentos + ".png)";
+                    break;
+                case 2:
+                    document.getElementById("caja").style.backgroundImage = "url(imagenes/imagen_" + intentos + ".png)";
+                    break;
+                case 3:
+                    document.getElementById("caja").style.backgroundImage = "url(imagenes/imagen_" + intentos + ".png)";
+                    break;
+                case 4:
+                    document.getElementById("caja").style.backgroundImage = "url(imagenes/imagen_" + intentos + ".png)";
+                    break;
+                case 5:
+                    document.getElementById("caja").style.backgroundImage = "url(imagenes/perder.png)";
+                    finJuego()
+                    break;
+            }
+        }
+
+
+
+
+        function finJuego() {
+
+            var retrasoJuego = 2000;
+
+            interval = setInterval(function () {
+
+                if (longitud_palabra == 0) {
+                    final_del_juego = true
+                    location.reload();
+                } else if (intentos == 5) {
+                    final_del_juego = true
+                    location.reload();
+                }
+            }, retrasoJuego);
+        }
+
+    </script>
+</head>
+
+
+<body>
+    <audio autoplay loop>
+        <source src="musica/musicafondo.mp3" type="audio/mp3">
+    </audio>
+
+    <center>
+
+        <div id="caja"></div>
+
+        <div id="PalabraParaAdivinar"></div>
+
+        <div id="Letras_Usadas"> Letras usadas<br></div>
+
+        <br><br>
+
+        <div id="contenedor_letras">
+
+            <div id="q" class="btn" onclick="comprobar('q');">Q</div>
+            <div id="w" class="btn" onclick="comprobar('w');">W</div>
+            <div id="e" class="btn" onclick="comprobar('e');">E</div>
+            <div id="r" class="btn" onclick="comprobar('r');">R</div>
+            <div id="t" class="btn" onclick="comprobar('t');">T</div>
+            <div id="y" class="btn" onclick="comprobar('y');">Y</div>
+            <div id="u" class="btn" onclick="comprobar('u');">U</div>
+            <div id="i" class="btn" onclick="comprobar('i');">I</div>
+            <div id="o" class="btn" onclick="comprobar('o');">O</div>
+            <div id="p" class="btn" onclick="comprobar('p');">P</div>
+            <br><br>
+            <div id="a" class="btn" onclick="comprobar('a');">A</div>
+            <div id="s" class="btn" onclick="comprobar('s');">S</div>
+            <div id="d" class="btn" onclick="comprobar('d');">D</div>
+            <div id="f" class="btn" onclick="comprobar('f');">F</div>
+            <div id="g" class="btn" onclick="comprobar('g');">G</div>
+            <div id="h" class="btn" onclick="comprobar('h');">H</div>
+            <div id="j" class="btn" onclick="comprobar('j');">J</div>
+            <div id="k" class="btn" onclick="comprobar('k');">K</div>
+            <div id="l" class="btn" onclick="comprobar('l');">L</div>
+            <br><br>
+            <div id="z" class="btn" onclick="comprobar('z');">Z</div>
+            <div id="x" class="btn" onclick="comprobar('x');">X</div>
+            <div id="c" class="btn" onclick="comprobar('c');">C</div>
+            <div id="v" class="btn" onclick="comprobar('v');">V</div>
+            <div id="b" class="btn" onclick="comprobar('b');">B</div>
+            <div id="n" class="btn" onclick="comprobar('n');">N</div>
+            <div id="m" class="btn" onclick="comprobar('m');">M</div>
+        </div>
+        <br><br><br>
+        <input type="button" value="resetear" class="boton_reset" onclick="location.reload();">
+
+
+    </center>
+
+
+
+</body>
+
+</html>

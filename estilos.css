@@ -1,0 +1,89 @@
+body {
+    background-image: url(imagenes/kbfjkhbsf.png);
+    opacity: 1;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#Contenedor_palabra {
+
+    background-color: aliceblue;
+}
+
+#caja {
+
+    width: 933px;
+    height: 518px;
+    background-image: url(imagenes/fondo.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: solid 8px;
+    border-radius: 10%;
+
+}
+
+#Letras_Usadas {
+    margin-top: 2%;
+    width: 550px;
+    height: 60px;
+    border: solid 2px;
+    background-color: white;
+    font-size: x-large;
+    border-radius: 10%;
+    font-family: "fuente_oeste";
+
+}
+
+#PalabraParaAdivinar {
+    margin-top: 1%;
+    width: 550px;
+    height: 50px;
+    border: solid 2px;
+    text-align: center;
+    padding-bottom: 2%;
+    background-color: white;
+    border-radius: 10%;
+    font-family: "fuente_oeste";
+}
+
+.btn {
+    width: 60px;
+    height: 60px;
+    font-size: xx-large;
+    display: inline;
+    cursor: pointer;
+    border: solid 3px;
+    border-radius: 20%;
+    background-color: white;
+    margin-left: 8px;
+    font-family: "fuente_oeste";
+}
+
+.PalabraEscondida {
+    border-bottom: solid;
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    margin-right: 8px;
+    font-size: 20px;
+    background-color: white;
+
+}
+
+.boton_reset {
+    border-radius: 10%;
+    font-weight: bolder;
+    cursor: pointer;
+    font-family: "fuente_oeste";
+}
+
+#audio {
+    display: none
+}
+
+
+@font-face {
+    font-family: "fuente_oeste";
+    src: url("fuente/TEXAT\ BOLD\ PERSONAL\ USE___.otf");
+}
